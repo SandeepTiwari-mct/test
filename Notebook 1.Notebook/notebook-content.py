@@ -43,3 +43,122 @@ df.createOrReplaceTempView('v1')
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
+
+# CELL ********************
+
+# Note: NotebookUtils is only supported on runtime v1.2 and above. If you are using runtime v1.1, please use mssparkutils instead.
+DAG = { 
+    "activities": [
+        { 
+            "name": "NotebookSample", # activity name, must be unique 
+            "path": "NotebookSample", # notebook path 
+            "timeoutPerCellInSeconds": 90, # max timeout for each cell, default to 90 seconds 
+            "args": {"p1": "changed value", "p2": 666}, # notebook parameters 
+        }, 
+        { 
+            "name": "NotebookSimple2", 
+            "path": "NotebookSimple2", 
+            "timeoutPerCellInSeconds": 120, 
+            "args": {"p1": "changed value 2", "p2": 777} 
+        }, 
+        { 
+            "name": "NotebookSample2.2", 
+            "path": "NotebookSample2", 
+            "timeoutPerCellInSeconds": 120, 
+            "args": {"p1": "changed value 3", "p2": 888}, 
+            "retry": 1, 
+            "retryIntervalInSeconds": 10, 
+            "dependencies": ["NotebookSample"] # list of activity names that this activity depends on 
+        } 
+    ] 
+} 
+
+notebookutils.notebook.runMultiple(DAG)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# works with the default lakehouse files using relative path 
+notebookutils.fs.ls("Files/tmp") 
+# based on ABFS file system 
+notebookutils.fs.ls("abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path>")  
+# based on local file system of driver node
+notebookutils.fs.ls("file:/tmp")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# works with the default lakehouse files using relative path 
+notebookutils.fs.ls("Files/tmp") 
+# based on ABFS file system 
+notebookutils.fs.ls("abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path>")  
+# based on local file system of driver node
+notebookutils.fs.ls("file:/tmp")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+nu11    
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Note: NotebookUtils is only supported on runtime v1.2 and above. If you are using runtime v1.1, please use mssparkutils instead.
+DAG = { 
+    "activities": [
+        { 
+            "name": "NotebookSample", # activity name, must be unique 
+            "path": "NotebookSample", # notebook path 
+            "timeoutPerCellInSeconds": 90, # max timeout for each cell, default to 90 seconds 
+            "args": {"p1": "changed value", "p2": 666}, # notebook parameters 
+        }, 
+        { 
+            "name": "NotebookSimple2", 
+            "path": "NotebookSimple2", 
+            "timeoutPerCellInSeconds": 120, 
+            "args": {"p1": "changed value 2", "p2": 777} 
+        }, 
+        { 
+            "name": "NotebookSample2.2", 
+            "path": "NotebookSample2", 
+            "timeoutPerCellInSeconds": 120, 
+            "args": {"p1": "changed value 3", "p2": 888}, 
+            "retry": 1, 
+            "retryIntervalInSeconds": 10, 
+            "dependencies": ["NotebookSample"] # list of activity names that this activity depends on 
+        } 
+    ] 
+} 
+
+notebookutils.notebook.runMultiple(DAG)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
